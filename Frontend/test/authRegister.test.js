@@ -25,10 +25,10 @@ describe('Register Page Tests', function () {
 
 
         await driver.findElement(By.css('input[placeholder="Your Name"]')).sendKeys('Test User7');
-        await driver.findElement(By.css('input[placeholder="youremail@gmail.com"]')).sendKeys('testuser7@example.com');
+        await driver.findElement(By.css('input[placeholder="youremail@gmail.com"]')).sendKeys('testuser8@example.com');
         await driver.findElement(By.css('input[placeholder="111-222-333"]')).sendKeys('1234567890');
         await driver.findElement(By.css('input[placeholder="Your Address"]')).sendKeys('123 Test St, Test City');
-        await driver.findElement(By.css('input[placeholder="Your Password"]')).sendKeys('TestPassword123');
+        await driver.findElement(By.css('input[placeholder="Your Password"]')).sendKeys('TestPassdword123');
 
     
         await driver.findElement(By.css('button[type="submit"]')).click();

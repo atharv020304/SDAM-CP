@@ -153,7 +153,7 @@ export const UpdateProfile = asyncHandler(async(req,res,next)=>{
 
     const user = await User.findByIdAndUpdate(req.user.id,newData,{
         new:true,
-        runValidators: true,
+        runValidators: true, //Makes Mongoose run schema validators during update.
         useFindAndModify: false,
     });
 

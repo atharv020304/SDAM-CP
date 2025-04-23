@@ -26,13 +26,10 @@ app.use(cors({
 })
 );
 
-// to get access to tokens 
-app.use(cookieParser())
 
-
-// to check type of data
-app.use(express.json())
-app.use(express.urlencoded({extended:true}));
+app.use(cookieParser())  //Parse cookies attached to the client request object (req.cookies)
+app.use(express.json())  //Parses incoming JSON payloads and makes the data available on req.body
+app.use(express.urlencoded({extended:true}));  //Parses incoming requests with URL-encoded payloads, like the ones submitted via traditional HTML forms
 
 
 app.use(
@@ -40,7 +37,7 @@ app.use(
     useTempFiles: true,
     tempFileDir: "/tmp/",
 })
-);
+); // to enable incoming requests which have files in it.
 
 app.use("/api/v1/user",userRouter);
 app.use("/api/v1/job",jobRouter);
@@ -54,3 +51,5 @@ connection()
 app.use(errorMiddleware)
 
 export default app;
+
+

@@ -9,7 +9,7 @@ export const postApplication = asyncHandler(async(req,res,next)=>{
     const {id} = req.params;
     const {name, email, phone, address,coverLetter} = req.body;
     if(!name || !email || !phone || !address || !coverLetter){
-        return next(new errHandler(400,"all fields are required "));
+        return next(new errHandler(400,"all the fields are required "));
     }    
 
     const employeeInfo = {

@@ -5,7 +5,7 @@ import { Job } from "../Models/job.js";
 import {User} from "../Models/user.js"
 
 export const PostJob = asyncHandler(async (req, res, next) => {
-    console.log(req.body);  // Log the incoming data
+    console.log(req.body);  
 
     const {
         title,
@@ -24,7 +24,7 @@ export const PostJob = asyncHandler(async (req, res, next) => {
         newsLettersSend
     } = req.body;
 
-    // Log each field to see what is missing
+    
     console.log({ title, jobType, location, companyName, qualification, responsibilities, introduction, salary, jobDomain });
 
     if (!title || 
@@ -72,7 +72,7 @@ export const PostJob = asyncHandler(async (req, res, next) => {
             job
         });
     } catch (error) {
-        console.error('Error creating job:', error);  // Log the error for debugging
+        console.error('Error creating job:', error);  
         return res.status(500).json({ error: 'Internal server error' });
         console.log(error.message);
     }
@@ -83,17 +83,17 @@ export const getAllJobs = asyncHandler(async(req,res,next) =>{
     const {city, domain, searchKeyword} = req.query;
     const query = {};
     if(city){
-        query.location = city; //add new object in query
+        query.location = city; 
     }
     if(domain){
         query.jobDomain = domain;
     }
 
-    // this serachs keywords in respective fields ||
+    
     if(searchKeyword){
         query.$or =[
             {title: {$regex: searchKeyword,$options: "i"}},
-            {companyName: {$regex :searchKeyword, $options: "i"}}, // "i" is for case insensitive
+            {companyName: {$regex :searchKeyword, $options: "i"}}, 
             {introduction: {$regex :searchKeyword, $options: "i"}} // "i" is for case insensitive
         ];
     }
